@@ -1,59 +1,446 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Social Networking Platform - Laravel 10
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A feature-rich social networking platform built with Laravel 10, following clean architecture principles, SOLID design patterns, and modern best practices.
 
-## About Laravel
+## 🚀 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Core Features
+- ✅ User Authentication (Register, Login, Logout, Password Reset)
+- ✅ User Profiles (View, Edit, Profile Picture Upload)
+- ✅ Friend Requests System (Send, Accept, Reject)
+- ✅ Posts (Create, Read, Update, Delete with Image Upload)
+- ✅ Comments on Posts
+- ✅ Like/Unlike Posts
+- ✅ News Feed (Posts from friends)
+- ✅ User Search
+- ✅ Friend Suggestions
+- ✅ RESTful API with Laravel Sanctum
+- ✅ Real-time Notifications (Pusher/Laravel Echo)
+- ✅ Comprehensive API Documentation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Technical Features
+- Clean Architecture (Domain, Application, Infrastructure, Presentation layers)
+- Repository Pattern for data access
+- Service Layer for business logic
+- DTOs for data transfer
+- API Resources for consistent responses
+- Event-driven architecture
+- Comprehensive error handling
+- Database migrations and seeders
+- Factory pattern for testing
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📋 Requirements
 
-## Learning Laravel
+- PHP 8.1 or higher
+- Composer
+- MySQL 8.0 or higher
+- Node.js & NPM (for frontend assets)
+- Redis (optional, for caching and queues)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🛠️ Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd social-network
+```
 
-## Laravel Sponsors
+### 2. Install Dependencies
+```bash
+composer install
+npm install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 3. Environment Configuration
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-### Premium Partners
+Update `.env` file with your database credentials:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=social_network
+DB_USERNAME=root
+DB_PASSWORD=your_password
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+FILESYSTEM_DISK=public
 
-## Contributing
+BROADCAST_DRIVER=pusher
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+PUSHER_APP_ID=your_app_id
+PUSHER_APP_KEY=your_app_key
+PUSHER_APP_SECRET=your_app_secret
+PUSHER_APP_CLUSTER=mt1
+```
 
-## Code of Conduct
+### 4. Database Setup
+```bash
+# Create database
+mysql -u root -p -e "CREATE DATABASE social_network"
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Run migrations
+php artisan migrate
 
-## Security Vulnerabilities
+# Seed database with sample data (optional)
+php artisan db:seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 5. Storage Link
+```bash
+php artisan storage:link
+```
 
-## License
+### 6. Register Service Provider
+Add the following to `config/app.php` in the `providers` array:
+```php
+App\Providers\RepositoryServiceProvider::class,
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 7. Compile Assets
+```bash
+npm run dev
+# or for production
+npm run build
+```
+
+### 8. Start Development Server
+```bash
+php artisan serve
+```
+
+Visit: `http://localhost:8000`
+
+### 9. Queue Worker (for real-time features)
+```bash
+php artisan queue:work
+```
+
+## 📁 Project Structure
+
+```
+app/
+├── Domain/                  # Business entities and models
+│   ├── User/
+│   │   └── Models/
+│   ├── Post/
+│   │   └── Models/
+│   └── Friendship/
+│       ├── Models/
+│       └── Enums/
+│
+├── Application/            # Business logic layer
+│   ├── Contracts/         # Repository interfaces
+│   ├── DTOs/              # Data Transfer Objects
+│   └── Services/          # Business services
+│
+├── Infrastructure/         # External integrations
+│   ├── Repositories/      # Repository implementations
+│   └── Notifications/     # Notification classes
+│
+└── Presentation/          # API & Web controllers
+    ├── Http/
+    │   ├── Controllers/
+    │   │   ├── Api/V1/
+    │   │   └── Web/
+    │   ├── Resources/     # API Resources
+    │   └── Requests/      # Form Requests
+    └── Events/            # Event classes
+```
+
+## 🔑 Authentication
+
+The API uses Laravel Sanctum for token-based authentication.
+
+### Register
+```bash
+POST /api/v1/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123",
+  "password_confirmation": "password123"
+}
+```
+
+### Login
+```bash
+POST /api/v1/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+Response includes `access_token` for subsequent requests.
+
+### Making Authenticated Requests
+```bash
+GET /api/v1/posts
+Authorization: Bearer {your-access-token}
+```
+
+## 📚 API Documentation
+
+Full API documentation is available in [API_DOCUMENTATION.md](API_DOCUMENTATION.md)
+
+### Quick API Reference
+
+#### Authentication
+- `POST /api/v1/register` - Register new user
+- `POST /api/v1/login` - Login
+- `POST /api/v1/logout` - Logout
+- `GET /api/v1/me` - Get current user
+
+#### Posts
+- `GET /api/v1/posts` - Get news feed
+- `POST /api/v1/posts` - Create post
+- `GET /api/v1/posts/{id}` - Get single post
+- `PUT /api/v1/posts/{id}` - Update post
+- `DELETE /api/v1/posts/{id}` - Delete post
+
+#### Comments
+- `GET /api/v1/posts/{postId}/comments` - Get comments
+- `POST /api/v1/posts/{postId}/comments` - Add comment
+- `PUT /api/v1/comments/{id}` - Update comment
+- `DELETE /api/v1/comments/{id}` - Delete comment
+
+#### Likes
+- `POST /api/v1/posts/{postId}/like` - Like post
+- `DELETE /api/v1/posts/{postId}/unlike` - Unlike post
+- `GET /api/v1/posts/{postId}/likes` - Get likes
+
+#### Friendships
+- `GET /api/v1/friends` - Get friends
+- `POST /api/v1/friends/request` - Send friend request
+- `POST /api/v1/friends/{id}/accept` - Accept request
+- `DELETE /api/v1/friends/{userId}` - Unfriend
+
+## 🧪 Testing
+
+### Run Tests
+```bash
+# Run all tests
+php artisan test
+
+# Run specific test file
+php artisan test tests/Feature/PostTest.php
+
+# Run with coverage
+php artisan test --coverage
+```
+
+### Test User
+After seeding, use these credentials:
+- Email: `test@example.com`
+- Password: `password`
+
+## 🔄 Real-time Features
+
+### Setup Laravel Echo (Frontend)
+```bash
+npm install --save laravel-echo pusher-js
+```
+
+### Configure Echo
+```javascript
+import Echo from 'laravel-echo';
+import Pusher from 'pusher-js';
+
+window.Pusher = Pusher;
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    encrypted: true,
+    authEndpoint: '/broadcasting/auth',
+    auth: {
+        headers: {
+            Authorization: 'Bearer ' + token
+        }
+    }
+});
+```
+
+### Listen to Events
+```javascript
+// Listen for new posts
+Echo.private(`user.${userId}`)
+    .listen('.post.created', (e) => {
+        console.log('New post created:', e);
+    });
+
+// Listen for friend requests
+Echo.private(`user.${userId}`)
+    .listen('.friend.request.sent', (e) => {
+        console.log('Friend request received:', e);
+    });
+
+// Listen for post likes
+Echo.private(`user.${userId}`)
+    .listen('.post.liked', (e) => {
+        console.log('Your post was liked:', e);
+    });
+```
+
+## 🛡️ Security Features
+
+- CSRF Protection
+- SQL Injection Prevention (Eloquent ORM)
+- XSS Protection
+- Password Hashing (Bcrypt)
+- Rate Limiting
+- Input Validation
+- Authentication & Authorization
+- Secure File Uploads
+
+## 📊 Database Schema
+
+### Users Table
+- id, name, email, password
+- profile_picture, bio
+- email_verified_at, remember_token
+- timestamps, soft_deletes
+
+### Friendships Table
+- id, user_id, friend_id
+- status (pending, accepted, rejected)
+- timestamps
+
+### Posts Table
+- id, user_id, content
+- image_path
+- timestamps, soft_deletes
+
+### Comments Table
+- id, user_id, post_id
+- content
+- timestamps, soft_deletes
+
+### Likes Table
+- id, user_id, post_id
+- timestamps
+
+## 🎨 Design Patterns Used
+
+1. **Repository Pattern** - Data access abstraction
+2. **Service Layer Pattern** - Business logic encapsulation
+3. **DTO Pattern** - Data transfer between layers
+4. **Factory Pattern** - Object creation (testing)
+5. **Observer Pattern** - Event handling
+6. **Dependency Injection** - Loose coupling
+
+## 🔧 Configuration
+
+### File Upload Limits
+Update `php.ini` or `.htaccess`:
+```
+upload_max_filesize = 10M
+post_max_size = 10M
+```
+
+### Rate Limiting
+Configure in `app/Http/Kernel.php`:
+```php
+'api' => [
+    'throttle:60,1', // 60 requests per minute
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
+],
+```
+
+## 📝 Development Guidelines
+
+### Code Style
+- Follow PSR-12 coding standards
+- Use Laravel Pint for formatting:
+  ```bash
+  ./vendor/bin/pint
+  ```
+
+### Type Hints
+Always use type hints for parameters and return types:
+```php
+public function createPost(CreatePostDTO $dto): Post
+{
+    // ...
+}
+```
+
+### Naming Conventions
+- Controllers: `{Resource}Controller`
+- Models: Singular, PascalCase
+- Migrations: `{action}_{table}_table`
+- Services: `{Resource}Service`
+
+## 🚀 Deployment
+
+### Production Optimization
+```bash
+# Optimize configuration
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+# Optimize autoloader
+composer install --optimize-autoloader --no-dev
+
+# Build production assets
+npm run build
+```
+
+### Environment Variables
+Set these in production:
+```env
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://yourdomain.com
+
+# Use production database
+DB_CONNECTION=mysql
+DB_HOST=your-production-host
+
+# Use production cache/queue drivers
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis
+```
+
+## 📖 Additional Resources
+
+- [Laravel Documentation](https://laravel.com/docs/10.x)
+- [Laravel Sanctum](https://laravel.com/docs/10.x/sanctum)
+- [Laravel Echo](https://laravel.com/docs/10.x/broadcasting)
+- [Pusher Documentation](https://pusher.com/docs)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is open-sourced software licensed under the MIT license.
+
+## 👥 Authors
+
+- Your Name - Backend Developer
+
+## 🙏 Acknowledgments
+
+- Laravel Framework
+- Laravel Sanctum for authentication
+- Pusher for real-time features
+- All contributors and supporters
