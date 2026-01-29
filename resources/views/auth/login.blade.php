@@ -289,22 +289,6 @@
                                 <i class="fas fa-sign-in-alt me-2"></i> Login
                             </button>
                         </form>
-
-                        <div class="divider">
-                            <span>or continue with</span>
-                        </div>
-
-                        <div class="row g-2 mb-4">
-                            <div class="col-6">
-                                <button class="social-btn w-100">
-                                    <i class="fab fa-google text-danger me-2"></i> Google
-                                </button>
-                            </div>
-                            <div class="col-6">
-                                <button class="social-btn w-100">
-                                    <i class="fab fa-facebook text-primary me-2"></i> Facebook
-                                </button>
-                            </div>
                         </div>
 
                         <div class="text-center">
