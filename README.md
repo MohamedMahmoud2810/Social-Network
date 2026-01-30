@@ -41,7 +41,7 @@ A feature-rich social networking platform built with Laravel 10, following clean
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/MohamedMahmoud2810/Social-Network
 cd social-network
 ```
 
