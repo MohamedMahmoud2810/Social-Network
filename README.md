@@ -436,7 +436,7 @@ This project is open-sourced software licensed under the MIT license.
 
 ## 👥 Authors
 
-- Your Name - Backend Developer
+- Mohamed Mahmoud - Backend Developer
 
 ## 🙏 Acknowledgments
 
